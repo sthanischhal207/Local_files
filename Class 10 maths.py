@@ -20,6 +20,9 @@ def carea(radius):
 def cvolume(radius):
     return (4/3)*pi*pow(radius,3)
 
+def triangle():
+    
+
 def two_D(n):
     if n==1:
         choose = int(input("CHOOSE:\n1)Square\n2)Rectangle\n3)trapezium\n4)Circle\n5)Triangle\n"))
@@ -41,6 +44,8 @@ def two_D(n):
                 r = float(input("Enter radius: "))
                 print(f"Perimeter = {cperimeter(r)}")
                 print(f"Area = {carea(r)}")
+            case 5:
+                triangle()
 
 def three_D(n):
     if n==2:
