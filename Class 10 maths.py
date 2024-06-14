@@ -21,7 +21,7 @@ def cvolume(radius):
     return (4/3)*pi*pow(radius,3)
 
 def triangle():
-    
+    print("REMAINING TO CODE")
 
 def two_D(n):
     if n==1:
@@ -46,6 +46,8 @@ def two_D(n):
                 print(f"Area = {carea(r)}")
             case 5:
                 triangle()
+            case _:
+                two_D()
 
 def three_D(n):
     if n==2:
@@ -69,6 +71,20 @@ def three_D(n):
                 print(f"Total Surface Area = {2*carea(r) + cperimeter(r)*h}")
                 print(f"Curved Surface Area = {cperimeter(r)*h}")
                 print(f"Volume = {carea(r)*h}")
+            case 4:
+                r = float(input("Enter radius:"))
+                print(f"Total Surface Area: {4*carea(r)}")
+                print(f"Volume: {cvolume(r)}")
+            case 5:
+                r = float(input("Enter radius:"))
+                print(f"Curved Surface Area: {2*carea(r)}")
+                print(f"Total Surface Area: {3*carea(r)}")
+                print(f"Volume: {cvolume(r)/2}")
+            case 6:
+                l = float(input("Enter the length of base of pyramid: "))
+                
+            case _:
+                three_D()
 
 def main():
     print("-------Welcome to Geometric Calculator-------")
@@ -76,4 +92,5 @@ def main():
     two_D(choose)
     three_D(choose)
 
-main()
+if __name__ == "__main__":
+    main()
