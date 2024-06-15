@@ -108,4 +108,7 @@ def main():
     three_D(choose)
 
 if __name__ == "__main__":
-    main()
+    while True:
+        main()
+        if 'n' in input("WANNA USE MORE?(y/n)").lower():
+            break
