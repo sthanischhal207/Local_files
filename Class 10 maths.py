@@ -110,5 +110,6 @@ def main():
 if __name__ == "__main__":
     while True:
         main()
-        if 'n' in input("WANNA USE MORE?(y/n)").lower():
-            break
+        if 'y' in input("WANNA USE MORE?(y/n)").lower():
+            main()
+        break
