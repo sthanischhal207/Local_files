@@ -21,7 +21,24 @@ def cvolume(radius):
     return (4/3)*pi*pow(radius,3)
 
 def triangle():
-    print("REMAINING TO CODE")
+    choose = int(input(("CHOOSE:\n1)Equilateral\n2)Isosceles\n3)Scalene\n")))
+    if choose == 1 :
+        a = float(input("Enter side length:"))
+        print(f"Perimeter: {3*a}")
+        print(f"Area: {(math.sqrt(3)/4)*pow(a,2)}")
+    elif choose == 2:
+        a = float(input("Enter equal side length:"))
+        b = float(input("Enter unequal side length:"))
+        print(f"Perimeter: {2*a+b}")
+        print(f"Area: {(b/2)*math.sqrt(pow(a,2)-pow(b/2,2))}")
+    elif choose == 3:
+        a = float(input("Enter side 1 length:"))
+        b = float(input("Enter side 2 length:"))
+        c = float(input("Enter side 3 length:"))
+        print(f"Perimeter: {a+b+c}")
+        s = (a+b+c)/2
+        print(f"Area: {math.sqrt(s*(s-a)*(s-b)*(s-c))}")
+
 
 def two_D(n):
     if n==1:
@@ -51,7 +68,7 @@ def two_D(n):
 
 def three_D(n):
     if n==2:
-        choose = int(input("CHOOSE:\n1)Cube\n2)Cuboid\n3)Cylinder\n4)Sphere\n5)Semi-Sphere\n6)Pyramid\n7)Cone\n8)Triangular Prism\n"))
+        choose = int(input("CHOOSE:\n1)Cube\n2)Cuboid\n3)Cylinder\n4)Sphere\n5)Semi-Sphere\n"))
         match choose:
             case 1:
                 l = float(input("Enter length: "))
@@ -80,8 +97,6 @@ def three_D(n):
                 print(f"Curved Surface Area: {2*carea(r)}")
                 print(f"Total Surface Area: {3*carea(r)}")
                 print(f"Volume: {cvolume(r)/2}")
-            case 6:
-                l = float(input("Enter the length of base of pyramid: "))
                 
             case _:
                 three_D()
