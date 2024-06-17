@@ -40,8 +40,7 @@ def triangle():
         print(f"Area: {math.sqrt(s*(s-a)*(s-b)*(s-c))}")
 
 
-def two_D(n):
-    if n==1:
+def two_D():
         choose = int(input("CHOOSE:\n1)Square\n2)Rectangle\n3)trapezium\n4)Circle\n5)Triangle\n"))
         match choose:
             case 1:
@@ -66,8 +65,7 @@ def two_D(n):
             case _:
                 two_D()
 
-def three_D(n):
-    if n==2:
+def three_D():
         choose = int(input("CHOOSE:\n1)Cube\n2)Cuboid\n3)Cylinder\n4)Sphere\n5)Semi-Sphere\n"))
         match choose:
             case 1:
@@ -102,14 +100,19 @@ def three_D(n):
                 three_D()
 
 def main():
-    print("-------Welcome to Geometric Calculator-------")
-    choose = int(input("CHOOSE:\n1)Two Dimensional\n2)Three Dimensional\n"))
-    two_D(choose)
-    three_D(choose)
-
-if __name__ == "__main__":
     while True:
-        main()
-        if 'y' in input("WANNA USE MORE?(y/n)").lower():
+        print("-------Welcome to Geometric Calculator-------")
+        choose = int(input("CHOOSE:\n1)Two Dimensional\n2)Three Dimensional\n"))
+        if choose == 1:
+            two_D()
+        elif choose == 2: 
+            three_D()
+        else:
+            main()
+
+        if 'y' in input("WANNA USE MORE?(y/n)\n").lower():
             main()
         break
+
+if __name__ == "__main__":
+    main()
