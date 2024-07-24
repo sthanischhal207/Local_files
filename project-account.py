@@ -7,17 +7,9 @@ AND GIVE DATA OF THE PAYMENTS MADE,
 LATER YOU MAY DISPLAY THE DATA OF PAYMENTS MADE
 """
 
-<<<<<<< HEAD
-"""
-BEFORE RUNNING THE PROGRAM MAKE SURE YOU HAVE data_account.csv
-WHICH CAN BE DOWNLOADED FORM THE SAME REPOSITERY IN GITHUB
-OR
-=======
 '''
 BEFORE RUNNING THE PROGRAM MAKE SURE YOU HAVE data_account.csv WITHIN THE SAME FOLDER
 WHICH CAN BE DOWNLOADED FORM THE SAME REPOSITERY IN GITHUB
->>>>>>> bf0b951262e7653d13a264fe829131dbf7dce7af
-
 OR
 TO CREATE data_account.csv FILE:
 1) GO TO FILE WHERE YOU ARE RUNNING THE CODE
@@ -26,7 +18,7 @@ TO CREATE data_account.csv FILE:
  " room_no,name,date,amount,reason "
 
 NOW YOU MAY RUN THE PROGRAM
-"""
+'''
 
 import csv
 import sys
@@ -36,6 +28,12 @@ room = []
 
 
 def main():
+    global data
+    global room
+    data = []
+    room = []
+    store_data()
+    store_room()
     while True:
         try:
             choice = int(input("CHOOSE:\n1)VIEW DATA\n2)ADD DATA\n3)EXIT\n"))
@@ -85,6 +83,7 @@ def add_data():
             amount = input("AMOUNT: ")
             reason = input("REASON: ")
             x = 1
+            break
 
     if x != 1:
         name = input("NAME: ")
@@ -106,7 +105,6 @@ def add_data():
             }
         )
 
-    return Room_no
 
 
 def view_data():
@@ -158,6 +156,4 @@ def store_room():
 
 
 if __name__ == "__main__":
-    store_data()
-    store_room()
     main()
