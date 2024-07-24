@@ -7,19 +7,19 @@ AND GIVE DATA OF THE PAYMENTS MADE,
 LATER YOU MAY DISPLAY THE DATA OF PAYMENT
 """
 
-'''
-BEFORE RUNNING THE PROGRAM MAKE SURE YOU HAVE data_account.csv 
+"""
+BEFORE RUNNING THE PROGRAM MAKE SURE YOU HAVE data_account.csv
 WHICH CAN BE DOWNLOADED FORM THE SAME REPOSITERY IN GITHUB
-OR 
+OR
 
 TO CREATE A .csv FILE:
 1) GO TO FILE WHERE YOU ARE RUNNING THE CODE
 2) CREATE A NEW FILE CALLED data_account.csv
 3) COPY AND PASTE THE FOLLOWING INTO THE .csv FILE'S 1ST LINE
- " room_no,name,date,amount,reason " 
+ " room_no,name,date,amount,reason "
 
 NOW YOU MAY RUN THE PROGRAM
-'''
+"""
 
 import csv
 import sys
@@ -29,24 +29,28 @@ room = []
 
 
 def main():
-    store_data()
-    store_room()
-    try:
-        choice = int(input("CHOOSE:\n1)VIEW DATA\n2)ADD DATA\n3)EXIT"))
-        if choice == 1:
-            view_data()
-        elif choice == 2:
-            add_data()
+    while True:
+        try:
+            choice = int(input("CHOOSE:\n1)VIEW DATA\n2)ADD DATA\n3)EXIT\n"))
+            if choice == 1:
+                view_data()
+            elif choice == 2:
+                add_data()
 
-        elif choice == 3:
-            sys.exit(0)
-        else:
+            elif choice == 3:
+                sys.exit(0)
+            else:
+                print("\nChoose between 1 or 2 or 3\n")
+                main()
+
+        except ValueError:
             print("\nChoose between 1 or 2 or 3\n")
             main()
 
-    except ValueError:
-        print("\nChoose between 1 or 2 or 3\n")
-        main()
+        if "y" in input("DO YOU WANT TO CONTINUE?(y/n)").lower():
+            main()
+        else:
+            sys.exit(0)
 
 
 def store_data():
@@ -147,4 +151,6 @@ def store_room():
 
 
 if __name__ == "__main__":
+    store_data()
+    store_room()
     main()
