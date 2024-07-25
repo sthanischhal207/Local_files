@@ -8,6 +8,10 @@ LATER YOU MAY DISPLAY THE DATA OF PAYMENTS MADE
 """
 
 '''
+BEFORE RUNNING THE PROGRAM MAKE SURE YOU HAVE data_account.csv
+WHICH CAN BE DOWNLOADED FORM THE SAME REPOSITERY IN GITHUB
+OR
+
 BEFORE RUNNING THE PROGRAM MAKE SURE YOU HAVE data_account.csv WITHIN THE SAME FOLDER
 WHICH CAN BE DOWNLOADED FORM THE SAME REPOSITERY IN GITHUB
 OR
@@ -40,7 +44,8 @@ def main():
             if choice == 1:
                 view_data()
             elif choice == 2:
-                add_data()
+                Room_no = input("ROOM NUMBER: ")
+                add_data(Room_no)
 
             elif choice == 3:
                 sys.exit(0)
@@ -73,9 +78,8 @@ def store_data():
             )
 
 
-def add_data():
+def add_data(Room_no):
     x = 0
-    Room_no = input("ROOM NUMBER: ")
     for i in data:
         if Room_no == i["room_no"]:
             name = i["name"]
@@ -137,11 +141,33 @@ def print_data(r):
                 print_space(14 - len(i["amount"]))
                 print(i["reason"].strip())
     else:
-        print("ROOM NUMBER INVALID")
-        print("CHOOSE AMONG ROOM NO: ", end="")
-        for i in room:
-            print(f"\t{i}", end="")
-        view_data()
+        if room == []:
+            print(f"\nDATA OF ROOM NUMBER {r} IS NOT SAVED")
+        else:
+            print(f"WE HAVE NO DATA OF ROOM NUMBER {r}")
+            print("CHOOSE AMONG ROOM NO: ", end="")
+            for i in room:
+                print(f"\t{i}", end="")
+            print("\nOR")
+        print(f"DO YOU WANT TO ADD DATA FOR ROOM NUMBER {r}")
+        if room == []:
+            while True:
+                choice = input("(y/n) :").lower()
+                if 'y' in choice:
+                    add_data(r)
+                    break
+                elif 'n' in choice:
+                    break
+        else:
+            while True:
+                choice = input("(choose/add) :").lower()
+                if 'add' in choice:
+                    add_data(r)
+                    break
+                elif 'choose' in choice:
+                    view_data()
+                    break
+
 
 
 def print_space(n):
