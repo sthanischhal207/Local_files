@@ -69,6 +69,7 @@ def add_data():
         if x == 1:
             date = d
         else:
+            print("NOTE:   DATE SHOULD STRICTLY BE WRITTEN IN YYYY-MM-DD FORMAT SEPERATED BY ' - '): ")
             date = input("DATE: ")
         amount = input("AMOUNT: ")
         reason = input("REASON: ")
