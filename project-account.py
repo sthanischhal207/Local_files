@@ -60,7 +60,7 @@ def main():
 
 
 def store_data():
-    with open("data_account.csv", "r") as file:
+    with open("data.csv", "r") as file:
         reader = csv.DictReader(file)
         for row in reader:
             data.append(
@@ -91,7 +91,7 @@ def add_data(Room_no):
         amount = input("AMOUNT: ")
         reason = input("REASON: ")
 
-    with open("data_account.csv", "a") as file:
+    with open("data.csv", "a") as file:
         writer = csv.DictWriter(
             file, fieldnames=["room_no", "name", "date", "amount", "reason"]
         )
@@ -179,3 +179,4 @@ def store_room():
 
 if __name__ == "__main__":
     main()
+
