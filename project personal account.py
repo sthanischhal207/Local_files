@@ -114,7 +114,10 @@ gamount = 0
 
 
 def view_data():
-    global eamount, gamount
+    global eamount, gamount,to
+    if(data == []):
+        print("\n---------NO DATA FOUND-----------\n")
+        main()
     choose = input("VIEW DATA:\n1)MONTHLY\n2)ALL DATA\n")
     if choose == "1":
         x = int(input("WHICH MONTH (IN NUMBER): "))
@@ -122,21 +125,30 @@ def view_data():
         if choose == "1":
             initial_table(j)
             print_data(x, j)
+            if j == 'e':
+                print("-"*15,to,"-"*15)
         elif choose == "2":
             initial_table(j)
             for i in range(12):
                 print_data(i + 1, j)
-    print(f"\n\nTOTAL EXPENDITURE: {eamount}\nTOTAL GAIN: {gamount}\nYOU HAVE {gamount-eamount} LEFT\n")
+            if j == 'e':
+                print("-"*15,to,"-"*15)
+    print(
+        f"\n\nTOTAL EXPENDITURE: {eamount}\nTOTAL GAIN: {gamount}\nYOU HAVE {gamount-eamount} LEFT\n"
+    )
     eamount = 0
     gamount = 0
 
-
+to = 0
+dat = ''
 def print_data(n, t):
-    global eamount, gamount
-    to = 0
-    dat = ''
+    global eamount, gamount ,to , dat
     for i in data:
-        if n == int((i["date"].split("-"))[1]) and i["t"] == t:
+        if n == int(i["date"].split("-")[1]) and i["t"] == t:
+            if dat != i["date"] and t == "e":
+                print("-"*15,to,"-"*15)
+                to = 0
+            dat = i['date']
             print(f"{i['date']}", end="")
             print_space(12 - len(i["date"]))
             print(f"{i['amount']}", end="")
@@ -147,10 +159,7 @@ def print_data(n, t):
                 to += int(i["amount"])
             else:
                 gamount += int(i["amount"])
-            if dat != i["date"] and t == "e":
-                print("-"*15,to,"-"*15)
-                to = 0
-            dat = i['date']
+            
 
 
 def print_space(n):
