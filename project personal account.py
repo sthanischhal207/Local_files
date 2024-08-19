@@ -68,6 +68,7 @@ def add_data():
             add_data()
         if x == 1:
             date = d
+            x = 0
         else:
             print("NOTE:   DATE SHOULD STRICTLY BE WRITTEN IN YYYY-MM-DD FORMAT SEPERATED BY ' - '): ")
             date = input("DATE: ")
@@ -125,17 +126,17 @@ def view_data():
             initial_table(j)
             for i in range(12):
                 print_data(i + 1, j)
-    print(
-        f"\n\nTOTAL EXPENDITURE: {eamount}\nTOTAL GAIN: {gamount}\nYOU HAVE {gamount-eamount} LEFT\n"
-    )
+    print(f"\n\nTOTAL EXPENDITURE: {eamount}\nTOTAL GAIN: {gamount}\nYOU HAVE {gamount-eamount} LEFT\n")
     eamount = 0
     gamount = 0
 
 
 def print_data(n, t):
     global eamount, gamount
+    to = 0
+    dat = ''
     for i in data:
-        if n == int(i["date"].split("-")[1]) and i["t"] == t:
+        if n == int((i["date"].split("-"))[1]) and i["t"] == t:
             print(f"{i['date']}", end="")
             print_space(12 - len(i["date"]))
             print(f"{i['amount']}", end="")
@@ -143,8 +144,13 @@ def print_data(n, t):
             print(f"{i['reason']}")
             if t == "e":
                 eamount += int(i["amount"])
+                to += int(i["amount"])
             else:
                 gamount += int(i["amount"])
+            if dat != i["date"] and t == "e":
+                print("-"*15,to,"-"*15)
+                to = 0
+            dat = i['date']
 
 
 def print_space(n):
