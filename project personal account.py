@@ -26,7 +26,7 @@ data = []
 
 
 def main():
-    global data
+    global data,to,at
     data = []
     store_data()
     while True:
@@ -35,6 +35,8 @@ def main():
             if choice == 1:
                 add_data()
             elif choice == 2:
+                to = 0
+                at = ""
                 view_data()
             elif choice == 3:
                 sys.exit(0)
@@ -70,7 +72,6 @@ def add_data():
             date = d
             x = 0
         else:
-            print("NOTE:   DATE SHOULD STRICTLY BE WRITTEN IN YYYY-MM-DD FORMAT SEPERATED BY ' - '): ")
             date = input("DATE: ")
         amount = input("AMOUNT: ")
         reason = input("REASON: ")
@@ -114,10 +115,7 @@ gamount = 0
 
 
 def view_data():
-    global eamount, gamount,to
-    if(data == []):
-        print("\n---------NO DATA FOUND-----------\n")
-        main()
+    global eamount, gamount, to
     choose = input("VIEW DATA:\n1)MONTHLY\n2)ALL DATA\n")
     if choose == "1":
         x = int(input("WHICH MONTH (IN NUMBER): "))
@@ -125,30 +123,33 @@ def view_data():
         if choose == "1":
             initial_table(j)
             print_data(x, j)
-            if j == 'e':
-                print("-"*15,to,"-"*15)
+            if j == "e":
+                print("-" * 15, to, "-" * 15)
         elif choose == "2":
             initial_table(j)
             for i in range(12):
                 print_data(i + 1, j)
-            if j == 'e':
-                print("-"*15,to,"-"*15)
+            if j == "e":
+                print("-" * 15, to, "-" * 15)
     print(
         f"\n\nTOTAL EXPENDITURE: {eamount}\nTOTAL GAIN: {gamount}\nYOU HAVE {gamount-eamount} LEFT\n"
     )
     eamount = 0
     gamount = 0
 
+
 to = 0
-dat = ''
+dat = ""
+
+
 def print_data(n, t):
-    global eamount, gamount ,to , dat
+    global eamount, gamount, to, dat
     for i in data:
         if n == int(i["date"].split("-")[1]) and i["t"] == t:
             if dat != i["date"] and t == "e":
-                print("-"*15,to,"-"*15)
+                print("-" * 15, to, "-" * 15)
                 to = 0
-            dat = i['date']
+            dat = i["date"]
             print(f"{i['date']}", end="")
             print_space(12 - len(i["date"]))
             print(f"{i['amount']}", end="")
@@ -159,7 +160,6 @@ def print_data(n, t):
                 to += int(i["amount"])
             else:
                 gamount += int(i["amount"])
-            
 
 
 def print_space(n):
